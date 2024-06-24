@@ -1,0 +1,12 @@
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Model\bin\Debug\net8.0\AdsReportingPortal.Model.deps.json
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Model\bin\Debug\net8.0\AdsReportingPortal.Model.dll
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Model\bin\Debug\net8.0\AdsReportingPortal.Model.pdb
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Model\obj\Debug\net8.0\AdsReportingPortal.Model.csproj.AssemblyReference.cache
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Model\obj\Debug\net8.0\AdsReportingPortal.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Model\obj\Debug\net8.0\AdsReportingPortal.Model.AssemblyInfoInputs.cache
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Model\obj\Debug\net8.0\AdsReportingPortal.Model.AssemblyInfo.cs
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Model\obj\Debug\net8.0\AdsReportingPortal.Model.csproj.CoreCompileInputs.cache
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Model\obj\Debug\net8.0\AdsReportingPortal.Model.dll
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Model\obj\Debug\net8.0\refint\AdsReportingPortal.Model.dll
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Model\obj\Debug\net8.0\AdsReportingPortal.Model.pdb
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Model\obj\Debug\net8.0\ref\AdsReportingPortal.Model.dll

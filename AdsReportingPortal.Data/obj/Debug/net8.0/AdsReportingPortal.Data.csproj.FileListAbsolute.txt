@@ -1,0 +1,17 @@
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Data\bin\Debug\net8.0\AdsReportingPortal.Data.deps.json
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Data\bin\Debug\net8.0\AdsReportingPortal.Data.runtimeconfig.json
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Data\bin\Debug\net8.0\AdsReportingPortal.Data.dll
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Data\bin\Debug\net8.0\AdsReportingPortal.Data.pdb
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Data\bin\Debug\net8.0\AdsReportingPortal.Model.dll
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Data\bin\Debug\net8.0\AdsReportingPortal.Model.pdb
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Data\obj\Debug\net8.0\AdsReportingPortal.Data.csproj.AssemblyReference.cache
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Data\obj\Debug\net8.0\AdsReportingPortal.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Data\obj\Debug\net8.0\AdsReportingPortal.Data.AssemblyInfoInputs.cache
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Data\obj\Debug\net8.0\AdsReportingPortal.Data.AssemblyInfo.cs
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Data\obj\Debug\net8.0\AdsReportingPortal.Data.csproj.CoreCompileInputs.cache
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Data\obj\Debug\net8.0\AdsReportingPortal.Data.csproj.CopyComplete
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Data\obj\Debug\net8.0\AdsReportingPortal.Data.dll
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Data\obj\Debug\net8.0\refint\AdsReportingPortal.Data.dll
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Data\obj\Debug\net8.0\AdsReportingPortal.Data.pdb
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Data\obj\Debug\net8.0\AdsReportingPortal.Data.genruntimeconfig.cache
+C:\Users\bsahe\source\repos\AdsReportingPortal\AdsReportingPortal.Data\obj\Debug\net8.0\ref\AdsReportingPortal.Data.dll
