@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tCtuDjs22RRjsokYMzVCkDqSGGh6eR1TtyJ/tGgHj+U22xYMYI+NUJZ8ik+Kjj628UoAWuDX8zrW/fyUdicmuw==",
+  "dgSpecHash": "gsWr+I+3z9cAnP1bRAVPXZha2Josx4sxO1Uk/Ao7fknB1/broPXom1Uz1gT+RhCJyGW/uMagqacvk+RZWOYV2A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bsahe\\source\\repos\\AdsReportingPortal\\AdsReportingPortal.Model\\AdsReportingPortal.Model.csproj",
+  "projectFilePath": "C:\\Users\\bsahe\\Documents\\AdsPortalMiddleware\\AdsReportingPortal.Model\\AdsReportingPortal.Model.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bsahe\\.nuget\\packages\\mailkit\\3.2.0\\mailkit.3.2.0.nupkg.sha512",
     "C:\\Users\\bsahe\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.5\\microsoft.aspnetcore.cryptography.internal.8.0.5.nupkg.sha512",

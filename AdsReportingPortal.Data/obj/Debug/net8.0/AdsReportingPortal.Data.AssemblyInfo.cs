@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AdsReportingPortal.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b536bcc0843a33004e27d6b391026843b6f7166e")]
 [assembly: System.Reflection.AssemblyProductAttribute("AdsReportingPortal.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AdsReportingPortal.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

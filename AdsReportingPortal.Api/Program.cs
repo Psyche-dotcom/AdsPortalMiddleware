@@ -64,11 +64,11 @@ builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
 var app = builder.Build();
 Seeder.SeedData(app).Wait();
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+/*if (app.Environment.IsDevelopment())
+{*/
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+/*}*/
 app.UseCors();
 app.UseHttpsRedirection();
 

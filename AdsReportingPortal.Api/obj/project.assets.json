@@ -4262,11 +4262,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bsahe\\source\\repos\\AdsReportingPortal\\AdsReportingPortal.Api\\AdsReportingPortal.Api.csproj",
+      "projectUniqueName": "C:\\Users\\bsahe\\Documents\\AdsPortalMiddleware\\AdsReportingPortal.Api\\AdsReportingPortal.Api.csproj",
       "projectName": "AdsReportingPortal.Api",
-      "projectPath": "C:\\Users\\bsahe\\source\\repos\\AdsReportingPortal\\AdsReportingPortal.Api\\AdsReportingPortal.Api.csproj",
+      "projectPath": "C:\\Users\\bsahe\\Documents\\AdsPortalMiddleware\\AdsReportingPortal.Api\\AdsReportingPortal.Api.csproj",
       "packagesPath": "C:\\Users\\bsahe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bsahe\\source\\repos\\AdsReportingPortal\\AdsReportingPortal.Api\\obj\\",
+      "outputPath": "C:\\Users\\bsahe\\Documents\\AdsPortalMiddleware\\AdsReportingPortal.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\bsahe\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4283,8 +4283,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\bsahe\\source\\repos\\AdsReportingPortal\\AdsReportingPortal.Data\\AdsReportingPortal.Data.csproj": {
-              "projectPath": "C:\\Users\\bsahe\\source\\repos\\AdsReportingPortal\\AdsReportingPortal.Data\\AdsReportingPortal.Data.csproj"
+            "C:\\Users\\bsahe\\Documents\\AdsPortalMiddleware\\AdsReportingPortal.Data\\AdsReportingPortal.Data.csproj": {
+              "projectPath": "C:\\Users\\bsahe\\Documents\\AdsPortalMiddleware\\AdsReportingPortal.Data\\AdsReportingPortal.Data.csproj"
             }
           }
         }

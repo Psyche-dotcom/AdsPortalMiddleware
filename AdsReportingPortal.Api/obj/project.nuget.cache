@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MeuXX6kYqXO/Fqud/mKZ4kAoJ5Z/G+WhIcFMblQGChLf7471cKIW/GTU4K7rOy6jSRNuTDV4KAOV3Ihy+oWLTA==",
+  "dgSpecHash": "yPwOquYzKRYEfE8D7TuFiffBhtKDDVQHMVS6JjkFmLVpLrY+7Qbw4qBIIB36o8f27Ox8nrawqMkRtpDHpi5yXw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bsahe\\source\\repos\\AdsReportingPortal\\AdsReportingPortal.Api\\AdsReportingPortal.Api.csproj",
+  "projectFilePath": "C:\\Users\\bsahe\\Documents\\AdsPortalMiddleware\\AdsReportingPortal.Api\\AdsReportingPortal.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bsahe\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\bsahe\\.nuget\\packages\\mailkit\\3.2.0\\mailkit.3.2.0.nupkg.sha512",
