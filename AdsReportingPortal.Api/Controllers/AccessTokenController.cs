@@ -29,7 +29,8 @@ namespace AdsReportingPortal.Api.Controllers
             {
                 return BadRequest(result);
             }
-        }
+        } 
+       
      
     }
 }

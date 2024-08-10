@@ -1,8 +1,10 @@
-﻿using AdsReportingPortal.Api.Service.Interface;
+﻿using AdsReportingPortal.Api.Service.Implementation;
+using AdsReportingPortal.Api.Service.Interface;
 using AdsReportingPortal.Model.DTO;
 using AdsReportingPortal.Model.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace AdsReportingPortal.Api.Controllers
 {
@@ -16,6 +18,44 @@ namespace AdsReportingPortal.Api.Controllers
         {
             _adsStatService = adsStatService;
         }
+
+
+
+        [HttpGet("ads_account/campaigns")]
+        public async Task<IActionResult> GetAllCampaingn(string adsid)
+        {
+            var result = await _adsStatService.GetCampaignsAsync(adsid);
+            if (result.StatusCode == 200)
+            {
+                return Ok(result);
+            }
+            else if (result.StatusCode == 404)
+            {
+                return NotFound(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
+        [HttpGet("ads_account/all")]
+        public async Task<IActionResult> GetAllAdsAccount()
+        {
+            var result = await _adsStatService.GetAdAccountsAsync();
+            if (result.StatusCode == 200)
+            {
+                return Ok(result);
+            }
+            else if (result.StatusCode == 404)
+            {
+                return NotFound(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
+
         [HttpPost("meta/impression/daily/date")]
         public async Task<IActionResult> GetDailyStats (DailyStats req)
         {
@@ -50,6 +90,10 @@ namespace AdsReportingPortal.Api.Controllers
                 return BadRequest(result);
             }
         }
+
+
+
+
         [HttpPost("meta/stats/daily/date")]
         public async Task<IActionResult> GetDailyOtherStats([FromBody]DailyStats req, [FromQuery] int type)
         {

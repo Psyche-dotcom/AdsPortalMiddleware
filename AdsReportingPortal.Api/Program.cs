@@ -54,7 +54,7 @@ builder.Services.AddQuartz(q =>
         .ForJob(jobKey)
         .WithIdentity("MyJob-trigger")
         .WithSimpleSchedule(x => x
-            .WithInterval(TimeSpan.FromMinutes(12))
+            .WithInterval(TimeSpan.FromMinutes(2))
             .RepeatForever()));
 });
 
@@ -75,5 +75,12 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+if (app.Environment.IsProduction())
+{
+var port = Environment.GetEnvironmentVariable("PORT") ?? "10000";
+app.Urls.Add($"http://0.0.0.0:{port}");
+}
+
 
 app.Run();

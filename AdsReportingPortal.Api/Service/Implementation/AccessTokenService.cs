@@ -86,8 +86,12 @@ namespace AdsReportingPortal.Api.Service.Implementation
             }
         }
 
-        public async Task<ResponseDto<string>> ConstructUrlMetaGender(string campaignid)
+        public async Task<ResponseDto<string>> ConstructUrlMetaGender(string campaignid, 
+            bool isDateRange = false,
+            string? startDate = null,
+    string? endDate = null)
         {
+
             var response = new ResponseDto<string>();
             try
             {
@@ -99,16 +103,44 @@ namespace AdsReportingPortal.Api.Service.Implementation
                     response.DisplayMessage = getAccessToken.DisplayMessage;
                     return response;
                 }
-                var decrptToken = _encryptionService.Decrypt(getAccessToken.Result,
-                    _configuration["Key:enkey"]);
+
+                var decrptToken = _encryptionService.Decrypt(getAccessToken.Result, _configuration["Key:enkey"]);
+
+                // Get the number of months to subtract from app settings
+                int monthsToSubtract = int.TryParse(_configuration["Ads:MonthsToSubtract"], out var result) ? result : 0;
+
+                // Calculate the since and until dates
+                DateTime currentDate = DateTime.UtcNow.Date;
+                DateTime untilDate = currentDate.AddMonths(-monthsToSubtract);
+                DateTime sinceDate = currentDate.AddMonths(-monthsToSubtract);
+
+
+
+                // Format dates to "yyyy-MM-dd"
+                string since;
+                string until;
+                if (isDateRange)
+                {
+                    since = startDate;
+                    until = endDate;
+                }
+                else
+                {
+                     since = sinceDate.ToString("yyyy-MM-dd");
+                     until = untilDate.ToString("yyyy-MM-dd");
+                }
+              
+
                 string otherfield = "fields=cpm,impressions,reach,clicks,ctr,spend,frequency,unique_clicks,conversion_rate_ranking,quality_ranking&";
                 string breakdown = "breakdowns=age,gender&";
-                string url = $"https://graph.facebook.com/v20.0/{campaignid}/insights?{otherfield}{breakdown}date_preset=this_year&access_token={decrptToken}";
+
+                // Construct the URL with dynamic time range
+                string url = $"https://graph.facebook.com/v20.0/{campaignid}/insights?{otherfield}{breakdown}time_range={{\"since\":\"{since}\",\"until\":\"{until}\"}}&time_increment=all_days&access_token={decrptToken}";
+
                 response.StatusCode = 200;
                 response.DisplayMessage = "success";
                 response.Result = url;
                 return response;
-
             }
             catch (Exception ex)
             {
@@ -119,7 +151,11 @@ namespace AdsReportingPortal.Api.Service.Implementation
                 return response;
             }
         }
-        public async Task<ResponseDto<string>> ConstructUrlPublisher(string campaignid)
+
+        public async Task<ResponseDto<string>> ConstructUrlPublisher(string campaignid,
+      bool isDateRange = false,
+      string? startDate = null,
+      string? endDate = null)
         {
             var response = new ResponseDto<string>();
             try
@@ -132,15 +168,41 @@ namespace AdsReportingPortal.Api.Service.Implementation
                     response.DisplayMessage = getAccessToken.DisplayMessage;
                     return response;
                 }
-                var decrptToken = _encryptionService.Decrypt(getAccessToken.Result,
-                    _configuration["Key:enkey"]);
+
+                var decrptToken = _encryptionService.Decrypt(getAccessToken.Result, _configuration["Key:enkey"]);
+
+                // Get the number of months to subtract from app settings
+                int monthsToSubtract = int.TryParse(_configuration["Ads:MonthsToSubtract"], out var result) ? result : 0;
+
+                // Calculate the since and until dates
+                DateTime currentDate = DateTime.UtcNow.Date;
+                DateTime untilDate = currentDate.AddMonths(-monthsToSubtract);
+                DateTime sinceDate = currentDate.AddMonths(-monthsToSubtract);
+
+                // Format dates to "yyyy-MM-dd"
+                string since;
+                string until;
+
+                if (isDateRange && !string.IsNullOrEmpty(startDate) && !string.IsNullOrEmpty(endDate))
+                {
+                    since = startDate;
+                    until = endDate;
+                }
+                else
+                {
+                    since = sinceDate.ToString("yyyy-MM-dd");
+                    until = untilDate.ToString("yyyy-MM-dd");
+                }
+
                 string breakdown = "breakdowns=publisher_platform&";
-                string url = $"https://graph.facebook.com/v20.0/{campaignid}/insights?{breakdown}date_preset=this_year&access_token={decrptToken}";
+
+                // Construct the URL with dynamic time range
+                string url = $"https://graph.facebook.com/v20.0/{campaignid}/insights?{breakdown}time_range={{\"since\":\"{since}\",\"until\":\"{until}\"}}&access_token={decrptToken}";
+
                 response.StatusCode = 200;
                 response.DisplayMessage = "success";
                 response.Result = url;
                 return response;
-
             }
             catch (Exception ex)
             {
@@ -151,6 +213,7 @@ namespace AdsReportingPortal.Api.Service.Implementation
                 return response;
             }
         }
+
         public async Task<ResponseDto<string>> GetToken()
         {
             var result = new ResponseDto<string>();

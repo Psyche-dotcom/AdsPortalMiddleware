@@ -3,6 +3,8 @@ using AdsReportingPortal.Data.Repository.Interface;
 using AdsReportingPortal.Model.DTO;
 using AdsReportingPortal.Model.Entities;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using RestSharp;
 
 namespace AdsReportingPortal.Api.Service.Implementation
 {
@@ -14,6 +16,7 @@ namespace AdsReportingPortal.Api.Service.Implementation
         private readonly IAdsPortalRepo<CostPerActionType> _costPerActionTypeRepo;
         private readonly IAdsPortalRepo<MetaAction> _actionRepo;
         private readonly IAdsPortalRepo<VideoPlayAction> _videoPlayRepo;
+        private readonly IAccessTokenService _accessTokenService;
         private readonly IEncryptionService _encryptionService;
         private readonly IConfiguration _configuration;
         public AdsStatService(IConfiguration configuration,
@@ -23,7 +26,8 @@ namespace AdsReportingPortal.Api.Service.Implementation
             IAdsPortalRepo<MetaAgeGenderCategory> metaAgeGenderRepo,
             IAdsPortalRepo<CostPerActionType> costPerActionTypeRepo,
             IAdsPortalRepo<MetaAction> actionRepo,
-            IAdsPortalRepo<VideoPlayAction> videoPlayRepo)
+            IAdsPortalRepo<VideoPlayAction> videoPlayRepo,
+            IAccessTokenService accessTokenService)
         {
             _configuration = configuration;
             _encryptionService = encryptionService;
@@ -33,7 +37,117 @@ namespace AdsReportingPortal.Api.Service.Implementation
             _costPerActionTypeRepo = costPerActionTypeRepo;
             _actionRepo = actionRepo;
             _videoPlayRepo = videoPlayRepo;
+            _accessTokenService = accessTokenService;
         }
+
+        public async Task<ResponseDto<GetCampaignsResponse>> GetCampaignsAsync(string ads_id)
+        {
+            var response = new ResponseDto<GetCampaignsResponse>();
+            try
+            {
+                var getAccessToken = await _accessTokenService.GetToken();
+                if (getAccessToken.StatusCode != 200)
+                {
+                    response.StatusCode = getAccessToken.StatusCode;
+                    response.ErrorMessages = getAccessToken.ErrorMessages;
+                    response.DisplayMessage = getAccessToken.DisplayMessage;
+                    return response;
+                }
+
+                var decrptToken = _encryptionService.Decrypt(getAccessToken.Result, _configuration["Key:enkey"]);
+
+                var client = new RestClient("https://graph.facebook.com/v17.0/");
+                // Define the request
+                var request = new RestRequest($"{ads_id}/campaigns", Method.Get);
+
+                // Add query parameters
+                request.AddQueryParameter("fields", "id,name,status,objective,start_time,stop_time,budget_remaining,daily_budget");
+                request.AddQueryParameter("access_token", decrptToken);
+
+                // Execute the request
+                var resp = await client.ExecuteAsync(request);
+
+                // Ensure the request was successful
+                if (!resp.IsSuccessful)
+                {
+                    response.StatusCode = 400;
+                    response.ErrorMessages = new List<string>() { $"{resp.ErrorMessage}" };
+                    response.DisplayMessage = "Error";
+                    return response;
+                }
+
+                var campaignsResponse = JsonConvert.DeserializeObject<GetCampaignsResponse>(resp.Content);
+                response.StatusCode = 200;
+                response.DisplayMessage = "Success";
+                response.Result = campaignsResponse;
+                return response;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                response.StatusCode = 500;
+                response.DisplayMessage = "Error";
+                response.ErrorMessages = new List<string>() { "Unable to retrieve campaigns successfully" };
+                return response;
+            }
+        }
+
+        public async Task<ResponseDto<GetAdsAccountResponse>> GetAdAccountsAsync()
+        {
+            var response = new ResponseDto<GetAdsAccountResponse>();
+            try
+            {
+
+                var getAccessToken = await _accessTokenService.GetToken();
+                if (getAccessToken.StatusCode != 200)
+                {
+                    response.StatusCode = getAccessToken.StatusCode;
+                    response.ErrorMessages = getAccessToken.ErrorMessages;
+                    response.DisplayMessage = getAccessToken.DisplayMessage;
+                    return response;
+                }
+
+                var decrptToken = _encryptionService.Decrypt(getAccessToken.Result, _configuration["Key:enkey"]);
+
+                var client = new RestClient("https://graph.facebook.com/v17.0/");
+                // Define the request
+                var request = new RestRequest("me/adaccounts", Method.Get);
+
+                // Add query parameters
+                request.AddQueryParameter("fields", "id,name,account_status,currency,amount_spent,business,created_time,daily_spend_limit,timezone_name,owner");
+                request.AddQueryParameter("access_token", decrptToken);
+
+                // Execute the request
+                var resp = await client.ExecuteAsync(request);
+
+                // Ensure the request was successful
+                if (!resp.IsSuccessful)
+                {
+
+                    response.StatusCode = 400;
+                    response.ErrorMessages = new List<string>() { $"{resp.ErrorMessage}" };
+                    response.DisplayMessage = "Error";
+                    return response;
+
+
+                }
+                var adAccountsResponse = JsonConvert.DeserializeObject<GetAdsAccountResponse>(resp.Content);
+                response.StatusCode = 200;
+                response.DisplayMessage = "Success";
+                response.Result = adAccountsResponse;
+                return response;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                response.StatusCode = 500;
+                response.DisplayMessage = "error";
+                response.ErrorMessages = new List<string>() { "Unable to get Ads account from meta succcessfully not added successfully" };
+                return response;
+            }
+        }
+
+
         public async Task<ResponseDto<string>> AddStatsMetaGenderAge(List<MetaGenApiResponse> ads)
         {
             var response = new ResponseDto<string>();
@@ -146,7 +260,7 @@ namespace AdsReportingPortal.Api.Service.Implementation
             {
                 pageNumber = pageNumber < 1 ? 1 : pageNumber;
                 perPageSize = perPageSize < 1 ? 5 : perPageSize;
-                var impressionMetricsRaw =  _metaAgeGenderRepo.GetQueryable()
+                var impressionMetricsRaw = _metaAgeGenderRepo.GetQueryable()
                     .Where(u => u.Created.Date == dateTime.Date)
                     .Select(m => new MetaAdsAllDailyResponse
                     {
@@ -184,7 +298,7 @@ namespace AdsReportingPortal.Api.Service.Implementation
                 response.DisplayMessage = "success";
                 response.Result = result;
                 return response;
-               
+
             }
             catch (Exception ex)
             {
