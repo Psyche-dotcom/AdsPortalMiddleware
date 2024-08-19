@@ -32,9 +32,7 @@ namespace AdsReportingPortal.Api.Service.Implementation
                 var checkToken = await _accessTokenRepo.GetQueryable().FirstOrDefaultAsync();
                 if (checkToken != null)
                 {
-
                     _accessTokenRepo.Delete(checkToken);
-
                 }
                 var encryptToken = _encryptionService.Encrypt(Token, _configuration["Key:enkey"]);
                 await _accessTokenRepo.Add(new AccessToken() { Token = encryptToken });

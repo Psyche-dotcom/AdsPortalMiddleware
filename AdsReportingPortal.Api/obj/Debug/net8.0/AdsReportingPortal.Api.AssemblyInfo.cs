@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AdsReportingPortal.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2598901135c6dd6f717286cea51ad0c7e3a422f7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac87bfa4ebf80fd1a5da90e7355f203325020611")]
 [assembly: System.Reflection.AssemblyProductAttribute("AdsReportingPortal.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AdsReportingPortal.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
